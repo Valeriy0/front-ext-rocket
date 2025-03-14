@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import { Button } from "../../Button";
 import { Navigation } from "../../Navigation";
 
-export const TokenInfo = () => {
+export const TokenInfo = ({ resetToken }) => {
     const checkList = ['Bundle', 'Artificial volume', 'Dev share'];
 
     const aboutToken = useMemo(() => {
@@ -34,7 +34,7 @@ export const TokenInfo = () => {
 
     return (
         <div className="flex flex-col h-full w-full">
-            <Navigation /> 
+            <Navigation resetToken={resetToken} /> 
             <div className="pt-3 flex-1 flex flex-col items-center justify-start space-y-6">
                 {aboutToken}
                 {checkers}

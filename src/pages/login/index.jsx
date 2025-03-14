@@ -8,14 +8,16 @@ export const Login = () => {
   const [isStarted, setIsStarted] = useState(false);
   const [tokenAddress, setTokenAddress] = useState(null);
 
+  console.log(tokenAddress);
+
   const currentStep = useMemo(() => {
     if (!isStarted) {
       return <Start setIsStarted={setIsStarted} />;
     } else {
       if (!!tokenAddress) {
-        return <TokenInfo />
+        return <TokenInfo resetToken={() => setTokenAddress(null)} />
       } 
-      return <EnterToken setTokenAddress={setTokenAddress} />
+      return <EnterToken tokenAddress={tokenAddress} setTokenAddress={setTokenAddress} />
     }
   }, [isStarted, tokenAddress] )
 
