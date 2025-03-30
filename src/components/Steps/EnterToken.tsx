@@ -23,11 +23,6 @@ const isValidSolanaAddress = (address: string): boolean => {
         return false;
     }
 
-    // Проверяем, что адрес начинается с буквы
-    if (!/^[a-zA-Z]/.test(trimmedAddress)) {
-        return false;
-    }
-
     return true;
 };
 
