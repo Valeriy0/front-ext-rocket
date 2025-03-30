@@ -4,6 +4,30 @@ import { Button } from "../Button";
 // import { isAddress } from "@solana/kit";
 
 const isValidSolanaAddress = (address: string): boolean => {
+    // Проверяем, что адрес не пустой
+    if (!address || address.trim().length === 0) {
+        return false;
+    }
+
+    // Убираем пробелы
+    const trimmedAddress = address.trim();
+
+    // Проверяем длину (Solana адреса обычно 32-44 символа)
+    if (trimmedAddress.length < 32 || trimmedAddress.length > 44) {
+        return false;
+    }
+
+    // Проверяем, что адрес содержит только буквы и цифры
+    const validCharacters = /^[a-zA-Z0-9]+$/;
+    if (!validCharacters.test(trimmedAddress)) {
+        return false;
+    }
+
+    // Проверяем, что адрес начинается с буквы
+    if (!/^[a-zA-Z]/.test(trimmedAddress)) {
+        return false;
+    }
+
     return true;
 };
 
