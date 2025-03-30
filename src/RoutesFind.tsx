@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Login } from './pages/login';
 
-export const RoutesFind = () => {
+export const RoutesFind: React.FC = () => {
   return (
     <Router>
       <Routes>
@@ -10,4 +10,4 @@ export const RoutesFind = () => {
       </Routes>
     </Router>
   );
-};
+}; 

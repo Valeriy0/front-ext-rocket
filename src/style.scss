@@ -1,3 +1,47 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    span, p, img {
+      user-select: none;
+      pointer-events: none;
+    }
+  
+    button, input {
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+          opacity: 0.8;
+      }
+      &:disabled {
+          opacity: 0.5;
+      }
+    }
+  
+    input {
+      @apply bg-[#1A1A1A] text-white border border-[#2A2A2A] rounded-lg px-4 py-2 focus:outline-none focus:border-[#3A3A3A];
+    }
+  }
+  
+  @layer components {
+    .logo-container {
+      @apply w-[200px] h-[200px] flex items-center justify-center;
+    }
+  
+    .logo-animation {
+      @apply z-[3] transition-transform duration-[500ms] ease-in-out;
+    }
+  
+    .status-text {
+      &.pending {
+        @apply text-white opacity-50;
+      }
+      &.error {
+        @apply text-[#FB3D3D];
+      }
+      &.success {
+        @apply text-[#1DF49A];
+      }
+    }
+  } 
