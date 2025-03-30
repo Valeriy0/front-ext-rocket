@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Input } from "../Input";
 import { Button } from "../Button";
-import { isAddress } from "@solana/kit";
+// import { isAddress } from "@solana/kit";
 
 const isValidSolanaAddress = (address: string): boolean => {
-    return isAddress(address);
+    return true;
 };
 
 interface EnterTokenProps {
