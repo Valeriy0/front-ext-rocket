@@ -59,18 +59,28 @@ export const TokenInfo: React.FC<TokenInfoProps> = ({
                 <ResultItem label="Dev share"
                     value={!isDevShareCheckCompleted ? 'Pending' :
                         hasDevShareCheckFailed ? 'Error' :
-                        devSharePercentage === undefined ? 'N/A' : // we are supposed to never show this
+                        devSharePercentage === undefined ? 'N/A' :
                         `${devSharePercentage.toFixed(2)}%`}
                 />
                 <ResultItem label="Artificial volume"
                     value={!isSwapCheckCompleted ? 'Pending' :
                         hasSwapCheckFailed ? 'Error' :
-                        swapVolumePercentage === undefined ? 'N/A' : // we are supposed to never show this
+                        swapVolumePercentage === undefined ? 'N/A' :
                         `${swapVolumePercentage.toFixed(2)}%`}
                 />
             </div>
         );
-    }, [isBundleCheckCompleted, isSwapCheckCompleted]);
+    }, [
+        isBundleCheckCompleted,
+        hasBundleCheckFailed,
+        bundleCheckResult,
+        isDevShareCheckCompleted,
+        hasDevShareCheckFailed,
+        devSharePercentage,
+        isSwapCheckCompleted,
+        hasSwapCheckFailed,
+        swapVolumePercentage
+    ]);
 
     return (
         <div className="flex flex-col h-full w-full">
