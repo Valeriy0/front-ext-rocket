@@ -66,7 +66,7 @@ export const EnterToken: React.FC<EnterTokenProps> = ({ checkTokenAddress }) => 
                             setError(null);
                         }}
                         onKeyDown={(e) => e.key === 'Enter' && handleContinue()}
-                        placeholder="Адрес токена"
+                        placeholder="Token address"
                     />
                     
                     <div className={`opacity-0 ${error ? 'opacity-100' : ''} transition-opacity duration-300 text-center w-full bg-[rgba(251,61,61,0.09)] rounded-[12px] px-4 py-2 text-[#FB3D3D] text-[10px]`}>
