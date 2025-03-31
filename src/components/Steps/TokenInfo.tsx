@@ -31,6 +31,13 @@ export const TokenInfo: React.FC<TokenInfoProps> = ({
     isDevShareCheckCompleted,
     devSharePercentage,
 }) => {
+    const status = useMemo(() => {
+        if (!isBundleCheckCompleted || !isDevShareCheckCompleted || !isSwapCheckCompleted) return 'loading';
+        if (hasBundleCheckFailed || hasDevShareCheckFailed || hasSwapCheckFailed) return 'error';
+        if (bundleCheckResult && devSharePercentage && swapVolumePercentage) return 'success';
+        return 'loading';
+    }, [isBundleCheckCompleted, hasBundleCheckFailed, bundleCheckResult, isDevShareCheckCompleted, hasDevShareCheckFailed, devSharePercentage, isSwapCheckCompleted, hasSwapCheckFailed, swapVolumePercentage]);
+
     const aboutToken = useMemo(() => {
         return (
             <div className="flex items-center justify-start w-full space-x-2">
@@ -93,11 +100,9 @@ export const TokenInfo: React.FC<TokenInfoProps> = ({
                 {aboutToken}
                 {checkers}
             </div>
-            <Button className="cursor-defaul pointer-events-none" variant={!isBundleCheckCompleted ? "loading" :
-                bundleCheckResult ? "error" :
-                "success"}>
-                {!isBundleCheckCompleted ? "Not finished yet" :
-                bundleCheckResult ? "Not ok" :
+            <Button className="cursor-defaul pointer-events-none" variant={status}>
+                {status === 'loading' ? "Not finished yet" :
+                    status === 'error' ? "Not ok" :
                 "Probably ok"}
             </Button>
         </div>
