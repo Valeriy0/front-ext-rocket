@@ -32,9 +32,7 @@ interface TokenTaskError {
 
 const client = hc<typeof backend>(config.backendBaseUrl);
 const getTokenTask = async (address: string): Promise<TokenTaskResponse | TokenTaskError> => {
-    const taskResponse = await client.token.$get({
-        param: { address }
-    });
+    const taskResponse = await (client.token as any)[address].$get();
 
     if(taskResponse.ok || taskResponse.status == 400) {
         const data = await taskResponse.json();
