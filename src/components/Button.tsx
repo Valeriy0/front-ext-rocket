@@ -14,11 +14,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: keyof typeof buttonTypes; 
     text?: string;
     loading?: boolean;
+    className?: string;
 }
 
-export const Button: React.FC<ButtonProps> = ({ loading = false, variant = 'main', text, children, ...props }) => {
+export const Button: React.FC<ButtonProps> = ({ loading = false, variant = 'main', text, children, className,...props }) => {
     return (
-        <button className={buttonTypes[variant]} {...props}>
+        <button className={`${buttonTypes[variant]} ${className}`} {...props}>
             {text || children}
         </button>
     );

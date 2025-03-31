@@ -46,7 +46,11 @@ export const TokenInfo: React.FC<TokenInfoProps> = ({
     const ResultItem = ({ label, value }: { label: string, value: string }) =>
         <div className="flex items-center justify-between">
             <span className="text-white text-[14px] leading-[18px] font-light">{label}</span>
-            <span className={`transition-all duration-300 status-text ${value.toLocaleLowerCase()} text-[#1DF49A] text-[14px] leading-[18px] font-light`}>{value}</span>
+            {value === 'Pending' ? (
+                <img src="/image/loader.svg" alt="loader" className="w-[16px] h-[16px] animate-spin" />
+            ) : (
+                <span className={`transition-all duration-300 status-text ${value.toLocaleLowerCase()} text-[#1DF49A] text-[14px] leading-[18px] font-light`}>{value}</span>
+            )}
         </div>
     const checkers = useMemo(() => {
         return (
@@ -89,7 +93,7 @@ export const TokenInfo: React.FC<TokenInfoProps> = ({
                 {aboutToken}
                 {checkers}
             </div>
-            <Button variant={!isBundleCheckCompleted ? "loading" :
+            <Button className="cursor-defaul pointer-events-none" variant={!isBundleCheckCompleted ? "loading" :
                 bundleCheckResult ? "error" :
                 "success"}>
                 {!isBundleCheckCompleted ? "Not finished yet" :
