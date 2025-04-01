@@ -1,5 +1,5 @@
 const config = {
-    backendBaseUrl: 'http://46.105.65.23:3010',
+    backendBaseUrl: 'https://mainnet.instameme.pro/scope',
     pollingIntervalMs: 500,
     pollingTimeoutMs: 60_000,
 } as const
